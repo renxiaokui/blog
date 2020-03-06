@@ -1,10 +1,15 @@
-title: centos7防火墙设置
+---
+title: centos防火墙设置
 author: 阿奎
-tags: []
-categories: []
+tags: 
+    - linux
+    - centos
+categories:
+    - linux
+    - centos
 date: 2020-03-04 15:42:00
 ---
-
+### cnetos7
 查看centos系统版本: `cat /etc/issue`
 
 启动: `systemctl start firewalld`
@@ -28,3 +33,19 @@ date: 2020-03-04 15:42:00
 查看: `firewall-cmd --zone= public --query-port=80/tcp`
 
 删除: `firewall-cmd --zone= public --remove-port=80/tcp --permanent`
+
+### cnetos6
+
+查看防火墙状态：`/etc/init.d/iptables status`
+
+开启防火墙：`service iptables start`
+
+关闭防火墙：`service iptables stop`
+
+开放端口：`vi /etc/sysconfig/iptables`
+
+重启防火墙：`service iptables restart`
+
+开机自启：
+*  `开启： chkconfig iptables on`
+*  `关闭： chkconfig iptables off`
