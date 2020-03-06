@@ -24,7 +24,7 @@ categories:
 查看所有容器：`docker ps -a`
 拉取docker镜像：`docker pull xxx`
 启动镜像： `docker run xxx`
-常用参数： -d 守护进程运行 -p 端口映射 --name 启动后容器的名字 -v 挂载存储卷 
+常用参数： -it -d 守护进程运行 -p 端口映射 --name 启动后容器的名字 -v 挂载存储卷 
 --restart="no"
 指定容器停止后的重启策略（no：容器退出时不重启  on-failure：容器故障退出（返回值非零）时重启 always：容器退出时总是重启）
 停止容器：docker stop [container]
