@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://renyinkui.gitee.io/blog/2020/03/06/test/">
+    <link itemprop="mainEntityOfPage" href="http://renyinkui.gitee.io/blog/2020/03/07/Git%E9%85%8D%E7%BD%AE%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%9C%B0%E5%9D%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.jpeg">
@@ -174,7 +174,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/blog/2020/03/06/test/" class="post-title-link" itemprop="url">test</a>
+            <a href="/blog/2020/03/07/Git%E9%85%8D%E7%BD%AE%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%9C%B0%E5%9D%80/" class="post-title-link" itemprop="url">Git配置同时连接多个远程地址.md</a>
         </h1>
 
         <div class="post-meta">
@@ -183,16 +183,19 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-06 23:21:20" itemprop="dateCreated datePublished" datetime="2020-03-06T23:21:20+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-07 15:22:29 / 修改时间：15:24:06" itemprop="dateCreated datePublished" datetime="2020-03-07T15:22:29+08:00">2020-03-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-07 14:04:31" itemprop="dateModified" datetime="2020-03-07T14:04:31+08:00">2020-03-07</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+                </span>
+            </span>
 
           
 
@@ -205,7 +208,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h3 id="Git配置同时连接多个远程地址"><a href="#Git配置同时连接多个远程地址" class="headerlink" title="Git配置同时连接多个远程地址"></a>Git配置同时连接多个远程地址</h3><p><em>注:此教程是同时绑定gitee和github</em></p>
+<ol>
+<li><p>右键使用Git Bash Here 进入ssh目录</p>
+<p><code>cd ~/.ssh</code><br>注:如果没有此目录,可能你第一次安装,可以执行ssh-keygen会自动生成一个key和目录</p>
+</li>
+<li><p>创建配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch config</span><br><span class="line">vi config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># gitee</span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;gitee_id_rsa</span><br><span class="line"></span><br><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;github_id_rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建sshkey</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx@qq.com&quot; -f &quot;github_id_rsa&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;xxx@qq.com&quot; -f &quot;github_id_rsa&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置sshkey</p>
+<p>查看密钥内容并复制：<code>cat github_id_rsa</code></p>
+<p> 进入<a href="https://github.com/" target="_blank" rel="noopener" title="github官网">github官网</a>右上角Settings，然后点击SSH and GPG keys，添加一个密钥，粘贴刚刚复制的密钥内容，Gitee同理</p>
+</li>
+<li><p>测试是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果看到Hi后面是你的用户名，就说明成功了</p>
+</li>
+</ol>
+
       
     </div>
 
@@ -516,7 +542,7 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-07 15:07:12" itemprop="dateModified" datetime="2020-03-07T15:07:12+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-07 15:23:20" itemprop="dateModified" datetime="2020-03-07T15:23:20+08:00">2020-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -789,13 +815,13 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
