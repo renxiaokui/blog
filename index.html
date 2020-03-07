@@ -516,7 +516,7 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-07 15:02:52" itemprop="dateModified" datetime="2020-03-07T15:02:52+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-07 15:07:12" itemprop="dateModified" datetime="2020-03-07T15:07:12+08:00">2020-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -570,12 +570,12 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
 </li>
 </ol>
 <h3 id="nodejs-环境安装"><a href="#nodejs-环境安装" class="headerlink" title="nodejs 环境安装"></a>nodejs 环境安装</h3><ol>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener" title="NodeJs下载">NodeJs下载</a></li>
+<li>NodeJs安装<br><a href="https://nodejs.org/en/" target="_blank" rel="noopener" title="NodeJs下载">NodeJs下载</a></li>
 </ol>
-<p>安装好以后，随便进入一个目录，右键打开Git Bash Here控制台，输入命令查看是否安装成功，如果没有安装git，用cmd也是可以的</p>
+<p>右键打开Git Bash Here控制台，输入命令查看是否安装成功，如果没有安装git，用cmd也是可以的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>更新npm源，不然npm下载会很慢:<code>npm config set registry https://registry.npm.taobao.org</code><br>检测配置是否成功:<code>npm config get registry</code><br>安装nrm <code>npm install nrm -g --save</code><br>用nrm ls命令查看默认配置，带*号即为当前使用的配置 <code>nrm ls</code><br>测试nrm速度 <code>nrm test</code><br>选择最快的源，一般选择taobao <code>nrm use taobao</code></li>
+<li>NPM源配置<br>这里选择taobao的源:<code>npm config set registry https://registry.npm.taobao.org</code><br>检测配置是否成功:<code>npm config get registry</code><br>安装nrm <code>npm install nrm -g --save</code><br>用nrm ls命令查看默认配置，带*号即为当前使用的配置 <code>nrm ls</code><br>测试nrm速度 <code>nrm test</code><br>选择最快的源，一般选择taobao <code>nrm use taobao</code></li>
 </ol>
 <p>注意：如果npm下载报错，可以升级npm到最新版 <code>npm install -g npm</code></p>
 <h3 id="hexo-环境安装"><a href="#hexo-环境安装" class="headerlink" title="hexo 环境安装"></a>hexo 环境安装</h3><ol>
@@ -584,7 +584,7 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
 <li><p>创建一个博客：</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">`hexo init blog`</span><br><span class="line">`<span class="built_in">cd</span> blog`</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br></pre></td></tr></table></figure>
 
 <p>如果成功，则恭喜你，失败的话可能是npm源配置不好，可以查看npm源配置，或者ping一个github的官网，重新执行init命令</p>
 <ol start="3">
