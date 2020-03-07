@@ -57,15 +57,17 @@ tags:
 
 ### nodejs 环境安装
 
-1. [NodeJs下载](https://nodejs.org/en/ "NodeJs下载")
+1. NodeJs安装 
+[NodeJs下载](https://nodejs.org/en/ "NodeJs下载")
 
-安装好以后，随便进入一个目录，右键打开Git Bash Here控制台，输入命令查看是否安装成功，如果没有安装git，用cmd也是可以的
+右键打开Git Bash Here控制台，输入命令查看是否安装成功，如果没有安装git，用cmd也是可以的
 ```bash
 git version
 node -v
 npm -v
 ```
-2. 更新npm源，不然npm下载会很慢:`npm config set registry https://registry.npm.taobao.org`
+2. NPM源配置
+这里选择taobao的源:`npm config set registry https://registry.npm.taobao.org`
 检测配置是否成功:`npm config get registry`
 安装nrm `npm install nrm -g --save`
 用nrm ls命令查看默认配置，带*号即为当前使用的配置 `nrm ls`
@@ -80,8 +82,8 @@ npm -v
 2. 创建一个博客：
 
 ```bash
-`hexo init blog`
-`cd blog`
+hexo init blog
+cd blog
 ```
 
 如果成功，则恭喜你，失败的话可能是npm源配置不好，可以查看npm源配置，或者ping一个github的官网，重新执行init命令
