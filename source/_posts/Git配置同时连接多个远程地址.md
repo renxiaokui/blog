@@ -1,5 +1,5 @@
 ---
-title: Git配置同时连接多个远程地址.md
+title: Git配置同时连接多个远程地址
 date: 2020-03-07 15:22:29
 categories:
     - git
