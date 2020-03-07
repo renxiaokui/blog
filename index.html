@@ -516,7 +516,7 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-07 14:46:17" itemprop="dateModified" datetime="2020-03-07T14:46:17+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-07 15:02:52" itemprop="dateModified" datetime="2020-03-07T15:02:52+08:00">2020-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -545,27 +545,51 @@ npm install hexo-deployer-git -save</code></pre><p>恭喜！你又可以写信�
       
           <h1 id="Hexo-Github个人博客搭建教程"><a href="#Hexo-Github个人博客搭建教程" class="headerlink" title="Hexo Github个人博客搭建教程"></a>Hexo Github个人博客搭建教程</h1><h3 id="github-账号注册"><a href="#github-账号注册" class="headerlink" title="github 账号注册"></a>github 账号注册</h3><p>注册github或者gitee账号（注 坑:gitee个人免费版部署需要手动更新）<br><a href="https://github.com/" target="_blank" rel="noopener" title="github官网">github官网</a><br><a href="https://gitee.com/" target="_blank" rel="noopener" title="gitee官网">gitee官网</a></p>
 <p><strong>注册大家都会吧，嘻嘻</strong></p>
-<h3 id="本地git连接github或gitee"><a href="#本地git连接github或gitee" class="headerlink" title="本地git连接github或gitee"></a>本地git连接github或gitee</h3><p><a href="https://git-scm.com/" target="_blank" rel="noopener" title="Git下载">Git官网下载</a><br>Git官网下载慢可选择国内镜像安装：<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener" title="Git下载">下载</a></p>
+<h3 id="本地git连接github或gitee"><a href="#本地git连接github或gitee" class="headerlink" title="本地git连接github或gitee"></a>本地git连接github或gitee</h3><ol>
+<li><p>git下载</p>
+<p><a href="https://git-scm.com/" target="_blank" rel="noopener" title="Git下载">Git官网下载</a></p>
+<p>Git官网下载慢可选择国内镜像安装：<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener" title="Git下载">下载</a></p>
 <p>安装好以后，随便进入一个目录，右键打开Git Bash Here控制台，输入命令查看是否安装成功 <code>git --version</code></p>
-<p>（1）进入<a href="https://github.com/" target="_blank" rel="noopener" title="github官网">github官网</a>创建一个新的github仓库<br>（2）使用本地git连接远程仓库，用于本地代码提交到github上</p>
-<p>在Git Bash Here控制台使用ssh-keygen生成私钥和公钥:  <code>ssh-keygen -t rsa</code><br>一直点击Enter键就可以了</p>
-<p>进入生成公钥的位置和github关联:<br>进入密钥默认生成目录：<code>cd ~/.ssh/</code><br>查看密钥内容并复制：<code>cat id_rsa.pub</code></p>
-<p>进入github右上角Settings，然后点击SSH and GPG keys，添加一个密钥，粘贴刚刚复制的密钥内容</p>
+</li>
+<li><p>创建github仓库</p>
+<p>进入<a href="https://github.com/" target="_blank" rel="noopener" title="github官网">github官网</a>创建一个新的github仓库</p>
+</li>
+<li><p>生成密钥和github关联</p>
+<p>打开sh Here控制台使用ssh-keygen生成私钥和公钥: <code>ssh-keygen -t rsa</code></p>
+<p>一直点击Enter键就可以了</p>
+<p>进入密钥默认生成目录：<code>cd ~/.ssh/</code></p>
+<p>查看密钥内容并复制：<code>cat id_rsa.pub</code></p>
+<p>进入<a href="https://github.com/" target="_blank" rel="noopener" title="github官网">github官网</a>右上角Settings，然后点击SSH and GPG keys，添加一个密钥，粘贴刚刚复制的密钥内容</p>
 <p>测试添加ssh是否成功: <code>ssh -T git@github.com</code></p>
 <p>如果看到Hi后面是你的用户名，就说明成功了</p>
-<p>配置github用户，不然提交代码会有报错</p>
+</li>
+<li><p>配置git提交用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的github用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的github邮箱"</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="nodejs-环境安装"><a href="#nodejs-环境安装" class="headerlink" title="nodejs 环境安装"></a>nodejs 环境安装</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener" title="NodeJs下载">NodeJs下载</a></p>
+
+</li>
+</ol>
+<h3 id="nodejs-环境安装"><a href="#nodejs-环境安装" class="headerlink" title="nodejs 环境安装"></a>nodejs 环境安装</h3><ol>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener" title="NodeJs下载">NodeJs下载</a></li>
+</ol>
 <p>安装好以后，随便进入一个目录，右键打开Git Bash Here控制台，输入命令查看是否安装成功，如果没有安装git，用cmd也是可以的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>更新npm源，不然npm下载会很慢:<code>npm config set registry https://registry.npm.taobao.org</code><br>检测配置是否成功:<code>npm config get registry</code><br>安装nrm <code>npm install nrm -g --save</code><br>用nrm ls命令查看默认配置，带*号即为当前使用的配置 <code>nrm ls</code><br>测试nrm速度 <code>nrm test</code><br>选择最快的源，一般选择taobao <code>nrm use taobao</code></p>
+<ol start="2">
+<li>更新npm源，不然npm下载会很慢:<code>npm config set registry https://registry.npm.taobao.org</code><br>检测配置是否成功:<code>npm config get registry</code><br>安装nrm <code>npm install nrm -g --save</code><br>用nrm ls命令查看默认配置，带*号即为当前使用的配置 <code>nrm ls</code><br>测试nrm速度 <code>nrm test</code><br>选择最快的源，一般选择taobao <code>nrm use taobao</code></li>
+</ol>
 <p>注意：如果npm下载报错，可以升级npm到最新版 <code>npm install -g npm</code></p>
-<h3 id="hexo-环境安装"><a href="#hexo-环境安装" class="headerlink" title="hexo 环境安装"></a>hexo 环境安装</h3><p><code>npm install -g hexo-cli</code></p>
-<p>安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<p><code>hexo init blog</code><br><code>cd blog</code></p>
-<p>如果成功，则恭喜你，失败的话可能是网络，可以尝试 ping下github地址，重新init</p>
-<p><code>hexo s</code></p>
+<h3 id="hexo-环境安装"><a href="#hexo-环境安装" class="headerlink" title="hexo 环境安装"></a>hexo 环境安装</h3><ol>
+<li><p>安装hexo插件：<code>npm install -g hexo-cli</code></p>
+</li>
+<li><p>创建一个博客：</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">`hexo init blog`</span><br><span class="line">`<span class="built_in">cd</span> blog`</span><br></pre></td></tr></table></figure>
+
+<p>如果成功，则恭喜你，失败的话可能是npm源配置不好，可以查看npm源配置，或者ping一个github的官网，重新执行init命令</p>
+<ol start="3">
+<li>本地启动博客：<code>hexo s</code></li>
+</ol>
 <p>在浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 回车就可以预览效果了</p>
 <h3 id="hexo-同步到github"><a href="#hexo-同步到github" class="headerlink" title="hexo 同步到github"></a>hexo 同步到github</h3><p>找到hexo博客目录中的_config.yml,拉到末尾修改配置</p>
 <pre><code>deploy:
