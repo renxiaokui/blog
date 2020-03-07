@@ -59,3 +59,34 @@ tags:
 
    如果看到Hi后面是你的用户名，就说明成功了
 
+### 同时上传一个项目到两个地址
+
+克隆项目到本地：`git clone 'https://gitee地址'`
+
+查看项目远端情况：`git remote -v`
+
+#### 方式一：`git remote set-url`命令
+
+*注意：项目的分支名必须是一样的，不一样会自动创一个新的分支*
+
+* 添加其他远端仓库地址：`git remote set-url --add origin 'https://github地址或者其他仓库'`
+
+* 推送到远程仓库：`git push`
+
+* 如果有冲突说明两个仓库代码不一致，可使用命令强制覆盖：`git push -f`
+
+
+#### 方式二：`git remote add` 命令
+
+添加其他远程仓库地址：`git remote add gitee(远端名称自定义) https://地址`
+
+查看项目远端情况，可以看到多了一个远端地址：`git remote -v`
+
+推送项目：
+
+`git push github master`
+`git push gitee master`
+
+
+总结：此方法的弊端是要多次push，建议如果要使用`pull`命令的话使用第二种，只是`push`使用第一种最方便
+
