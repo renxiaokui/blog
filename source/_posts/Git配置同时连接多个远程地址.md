@@ -14,7 +14,7 @@ tags:
 1. 右键使用Git Bash Here 进入ssh目录
 
    `cd ~/.ssh`
-   注:如果没有此目录,可能你第一次安装,可以执行ssh-keygen会自动生成一个key和目录
+   注:如果没有此目录,可能你第一次安装,可以执行`ssh-keygen`会自动生成一个key和目录
 
 2. 创建配置文件
 
@@ -41,7 +41,7 @@ tags:
 
    ```
    ssh-keygen -t rsa -C "xxx@qq.com" -f "github_id_rsa"
-   ssh-keygen -t rsa -C "xxx@qq.com" -f "github_id_rsa"
+   ssh-keygen -t rsa -C "xxx@qq.com" -f "gitee_id_rsa"
    ```
 
 4. 配置sshkey
