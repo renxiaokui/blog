@@ -22,12 +22,14 @@ categories:
 查看docker中所有的镜像：`docker images`
 查看正在运行的容器：`docker ps`
 查看所有容器：`docker ps -a`
+搜索仓库镜像：`docker search [container_name]`
 拉取docker镜像：`docker pull xxx`
+创建一个新的容器但不启动它(用法等同于run)：`docker create --name mycontainer [container]`
 启动镜像： `docker run xxx`
 常用参数： -it -d 守护进程运行 -p 端口映射 --name 启动后容器的名字 -v 挂载存储卷 
 --restart="no"
 指定容器停止后的重启策略（no：容器退出时不重启  on-failure：容器故障退出（返回值非零）时重启 always：容器退出时总是重启）
-停止容器：docker stop [container]
+停止容器：`docker stop [container]`
 进入docker容器内部：`docker exec -it [container] /bin/bash`
 查看启动容器日志:`docker logs -f`
 删除容器：`docker rm [container](或者name)`
@@ -37,6 +39,8 @@ categories:
 保存镜像：`docker save -o  /home/xxx.tar [container]`
 加载镜像： `docker load -i xxx.tar`
 删除镜像:`docker rmi -f [image]`
+主机拷贝文件到镜像：`docker cp /www [container]:/www/`
+镜像拷贝文件到主机：`docker cp [container]:/www/ /www`
 
 ### Docker仓库的基本使用
 可搭建docker自带仓库Docker Registry或者Habor
