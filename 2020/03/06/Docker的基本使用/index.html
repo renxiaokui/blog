@@ -28,7 +28,7 @@
 <meta property="og:description" content="Docker的基本使用Docker的管理命令设置开机自启:  systemctl enable docker启动docker： systemctl start docker重启docker： systemctl restart docker守护进程重启: systemctl daemon-reload停止docker： systemctl stop docker Docker的基本使用命令查看do">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-06T10:02:14.000Z">
-<meta property="article:modified_time" content="2020-03-07T06:04:31.651Z">
+<meta property="article:modified_time" content="2020-03-10T13:37:41.221Z">
 <meta property="article:author" content="任我行">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="centos">
@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-07 14:04:31" itemprop="dateModified" datetime="2020-03-07T14:04:31+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-10 21:37:41" itemprop="dateModified" datetime="2020-03-10T21:37:41+08:00">2020-03-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,7 +221,7 @@
 
       
         <h2 id="Docker的基本使用"><a href="#Docker的基本使用" class="headerlink" title="Docker的基本使用"></a>Docker的基本使用</h2><h3 id="Docker的管理命令"><a href="#Docker的管理命令" class="headerlink" title="Docker的管理命令"></a>Docker的管理命令</h3><p>设置开机自启:  <code>systemctl enable docker</code><br>启动docker： <code>systemctl start docker</code><br>重启docker： <code>systemctl restart docker</code><br>守护进程重启: <code>systemctl daemon-reload</code><br>停止docker： <code>systemctl stop docker</code></p>
-<h3 id="Docker的基本使用命令"><a href="#Docker的基本使用命令" class="headerlink" title="Docker的基本使用命令"></a>Docker的基本使用命令</h3><p>查看docker中所有的镜像：<code>docker images</code><br>查看正在运行的容器：<code>docker ps</code><br>查看所有容器：<code>docker ps -a</code><br>拉取docker镜像：<code>docker pull xxx</code><br>启动镜像： <code>docker run xxx</code><br>常用参数： -it -d 守护进程运行 -p 端口映射 –name 启动后容器的名字 -v 挂载存储卷<br>–restart=”no”<br>指定容器停止后的重启策略（no：容器退出时不重启  on-failure：容器故障退出（返回值非零）时重启 always：容器退出时总是重启）<br>停止容器：docker stop [container]<br>进入docker容器内部：<code>docker exec -it [container] /bin/bash</code><br>查看启动容器日志:<code>docker logs -f</code><br>删除容器：<code>docker rm [container](或者name)</code><br>删除所有容器：<code>docker rm $(docker ps -a -q)</code><br>上传镜像到仓库<code>docker push [image]</code><br>容器打包成新的镜像:<code>docker commit [container] newImage</code><br>保存镜像：<code>docker save -o  /home/xxx.tar [container]</code><br>加载镜像： <code>docker load -i xxx.tar</code><br>删除镜像:<code>docker rmi -f [image]</code></p>
+<h3 id="Docker的基本使用命令"><a href="#Docker的基本使用命令" class="headerlink" title="Docker的基本使用命令"></a>Docker的基本使用命令</h3><p>查看docker中所有的镜像：<code>docker images</code><br>查看正在运行的容器：<code>docker ps</code><br>查看所有容器：<code>docker ps -a</code><br>搜索仓库镜像：<code>docker search [container_name]</code><br>拉取docker镜像：<code>docker pull xxx</code><br>创建一个新的容器但不启动它(用法等同于run)：<code>docker create --name mycontainer [container]</code><br>启动镜像： <code>docker run xxx</code><br>常用参数： -it -d 守护进程运行 -p 端口映射 –name 启动后容器的名字 -v 挂载存储卷<br>–restart=”no”<br>指定容器停止后的重启策略（no：容器退出时不重启  on-failure：容器故障退出（返回值非零）时重启 always：容器退出时总是重启）<br>停止容器：<code>docker stop [container]</code><br>进入docker容器内部：<code>docker exec -it [container] /bin/bash</code><br>查看启动容器日志:<code>docker logs -f</code><br>删除容器：<code>docker rm [container](或者name)</code><br>删除所有容器：<code>docker rm $(docker ps -a -q)</code><br>上传镜像到仓库<code>docker push [image]</code><br>容器打包成新的镜像:<code>docker commit [container] newImage</code><br>保存镜像：<code>docker save -o  /home/xxx.tar [container]</code><br>加载镜像： <code>docker load -i xxx.tar</code><br>删除镜像:<code>docker rmi -f [image]</code><br>主机拷贝文件到镜像：<code>docker cp /www [container]:/www/</code><br>镜像拷贝文件到主机：<code>docker cp [container]:/www/ /www</code></p>
 <h3 id="Docker仓库的基本使用"><a href="#Docker仓库的基本使用" class="headerlink" title="Docker仓库的基本使用"></a>Docker仓库的基本使用</h3><p>可搭建docker自带仓库Docker Registry或者Habor<br>本地连接仓库</p>
 <pre><code>vi /etc/docker/daemon.json
 &quot;insecure-registries&quot;:[&quot;192.168.10.128:5000&quot;]
@@ -249,8 +249,8 @@ docker push 192.168.10.128:5000 /[image]:tag</code></pre>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2020/03/06/centos-docker%E5%AE%89%E8%A3%85/" rel="prev" title="centos_docker安装">
-      <i class="fa fa-chevron-left"></i> centos_docker安装
+    <a href="/blog/2020/03/06/Centos%20Docker%E5%AE%89%E8%A3%85/" rel="prev" title="Centos Docker安装">
+      <i class="fa fa-chevron-left"></i> Centos Docker安装
     </a></div>
       <div class="post-nav-item">
     <a href="/blog/2020/03/07/Git%E9%85%8D%E7%BD%AE%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E5%9C%B0%E5%9D%80/" rel="next" title="Git配置同时连接多个远程地址">
