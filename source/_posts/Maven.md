@@ -13,14 +13,14 @@ categories:
 
 1. 全局配置修改maven根目录下的conf文件夹中的setting.xml文件，让你下载飞速
 
-```
-<mirror>  
-  <id>alimaven</id>  
-  <name>aliyun maven</name>  
-  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
-  <mirrorOf>central</mirrorOf>          
-</mirror>  
-```
+   ```
+   <mirror>  
+     <id>alimaven</id>  
+     <name>aliyun maven</name>  
+     <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
+     <mirrorOf>central</mirrorOf>          
+   </mirror>  
+   ```
 
 2. 单个项目pom配置阿里云镜像仓库
 
