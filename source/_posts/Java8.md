@@ -80,7 +80,11 @@ print("ss",s-> System.out.println(s));
 
 相当于这个接口new了一个 实现Consumer的真实对象，然后去调用实现的accept方法，执行的方法就是lambda的方法体System.out.println(s)
 
+**最简单的解释consumer的accept方法就是你的lambda表达式中要执行的方法体**
+
 有的人可能不太理解s-> System.out.println(s)的意思，就是T这个类型确认以后，你的参数也就确定了，类型也就确定了，实现accept方法的方法体就是你的lambda要做的事情，这里的方法体就是System.out.println(s)
+
+有的人可能还会有一个疑惑，构造出这个函数式接口有什么意义，不就是为了简化代码，把你想对参数的处理，或者想得到一个对象简单的操作变得更简单，然后把接口当成别的方法的参数，你就可以用lambda，多方便呀！
 
 
 
@@ -104,3 +108,33 @@ this就是你的实现ArrayList集合，你的方法体呢，比如s-> System.ou
 它就会打印集合所有元素
 
 不知道这样说明不明白，这是我自己的理解
+
+2. 结合上面的函数式接口说明
+
+   ```
+   Consumer<T> 接收一个参数T，方法体就是你要怎么处理它
+   Supplier<T> 无参数，方法体是直接return一个你想要的T
+   Function<T, R> 接收一个参数T，方法体就是你要怎么处理它，然后返回一个R
+   Predicate<T> 接收一个参数T，返回boolean 实际就是Function<T, Boolean>
+   ```
+
+3. 方法引用
+
+   说到lambda，不得不提这个功能，我觉得挺难理解的，大家肯定见过**Integer::new**这种写法，这个就是方法引用的作用，返回的就是一个函数式接口Function<Integer, Integer> function = Integer::new;具体的方法就是：
+
+   ```
+   public Integer(int value) {
+       this.value = value;
+   }
+   ```
+
+可以看出，这个和Function是一样的，传入一个参数，返回一个参数，java8就可以推导出可以作为一个函数式接口来用，方法引用的标准形式是：`类名::方法名`。
+
+有以下四种形式的方法引用：
+
+| 方式                             | 用法                                 |
+| :------------------------------- | :----------------------------------- |
+| 引用静态方法                     | ContainingClass::staticMethodName    |
+| 引用某个对象的实例方法           | containingObject::instanceMethodName |
+| 引用某个类型的任意对象的实例方法 | ContainingType::methodName           |
+| 引用构造方法                     | ClassName::new                       |
