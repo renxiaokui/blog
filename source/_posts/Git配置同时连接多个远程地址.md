@@ -90,3 +90,10 @@ tags:
 
 总结：此方法的弊端是要多次push，建议如果要使用`pull`命令的话使用第二种，只是`push`使用第一种最方便
 
+
+
+## Git提交到远程仓库
+
+1.  把本地库与远程库关联：`git remote add origin 你的远程库地址`  
+2. 第一次推送时：`git push -u origin master`
+3. 第一次推送后，直接使用该命令即可推送修改：`git push origin master`  
