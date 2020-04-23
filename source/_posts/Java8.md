@@ -4,7 +4,7 @@ date: 2020-03-18 09:19:08
 tags:
 ---
 
-# Java8
+# Java8新特性学习（持续更新中...）
 
 ## FunctionalInterface函数式接口学习
 
@@ -109,7 +109,9 @@ this就是你的实现ArrayList集合，你的方法体呢，比如s-> System.ou
 
 不知道这样说明不明白，这是我自己的理解
 
-2. 结合上面的函数式接口说明
+
+
+2. 函数式接口总结
 
    ```
    Consumer<T> 接收一个参数T，方法体就是你要怎么处理它
@@ -118,23 +120,109 @@ this就是你的实现ArrayList集合，你的方法体呢，比如s-> System.ou
    Predicate<T> 接收一个参数T，返回boolean 实际就是Function<T, Boolean>
    ```
 
-3. 方法引用
+   
 
-   说到lambda，不得不提这个功能，我觉得挺难理解的，大家肯定见过**Integer::new**这种写法，这个就是方法引用的作用，返回的就是一个函数式接口Function<Integer, Integer> function = Integer::new;具体的方法就是：
+## 方法引用
 
-   ```
-   public Integer(int value) {
-       this.value = value;
-   }
-   ```
+说到lambda，不得不提这个功能，大家肯定见过**Integer::new**这种写法，这个就是方法引用的作用，返回的就是一个函数式接口Function<Integer, Integer> function = Integer::new;具体的方法就是：
+
+```
+public Integer(int value) {
+    this.value = value;
+}
+```
 
 可以看出，这个和Function是一样的，传入一个参数，返回一个参数，java8就可以推导出可以作为一个函数式接口来用，方法引用的标准形式是：`类名::方法名`。
 
 有以下四种形式的方法引用：
 
-| 方式                             | 用法                                 |
-| :------------------------------- | :----------------------------------- |
-| 引用静态方法                     | ContainingClass::staticMethodName    |
-| 引用某个对象的实例方法           | containingObject::instanceMethodName |
-| 引用某个类型的任意对象的实例方法 | ContainingType::methodName           |
-| 引用构造方法                     | ClassName::new                       |
+* 类名：：静态方法名
+
+* 对象：：实例方法名
+
+  上面两种方法比较好理解，就是方法参数及返回 和 lambda的函数式接口一直就可以这么写
+
+* 类名：：实例方法名
+
+  这种稍微难理解一些，举个例子吧
+
+  ```
+   List<Integer> integers = Arrays.asList(1, 3, 2, 7, 5);
+   integers.sort(Integer::compareTo); //方法引用方式
+   integers.sort((a,b)->a.compareTo(b));//lambda方式
+   integers.forEach(System.out::println);
+  ```
+
+  可以看出sort方法是接收两个参数，但是Integer的compareTo方法只有一个参数，怎么可以调用呢
+
+  其实方法是lambda里面的第一个参数（这里就是a）调用的，第二个参数（b）作为compareTo的参数传进去
+
+* 构造方法形式   对象：：new
+
+## Stream
+
+基于函数式接口来完成流式调用
+
+## Optional
+
+if null ? else ?
+
+还在不停的写这种吗，代码太长了，试试optional吧，告别nullpointerExcetion
+
+常用api讲解：
+
+创建一个Optional：
+
+```
+Optional<T> empty() 构造一个空的
+Optional<T> of(T value) 构造一个不为空的
+Optional<T> ofNullable(T value) 构造一个可能为空，也可能不为空的
+```
+
+Optional<T> ofNullable(T value) 构造一个可能为空，也可能不为空的
+
+获取具体值：
+
+```
+T get()
+```
+
+判断是否为空，仅仅返回boolean
+
+```
+isPresent()
+```
+
+判断空，然后去处理
+
+```
+ifPresent(Consumer<? super T> consumer)
+```
+
+产生新的optional
+
+```
+Optional<T> filter(Predicate<? super T> predicate)
+Optional<U> map(Function<? super T, ? extends U> mapper)
+Optional<U> flatMap(Function<? super T, Optional<U>> mapper)
+```
+
+返回：
+
+```
+T orElse(T other) 为空返回空，不为空返回当前对象
+T orElseGet(Supplier<? extends T> other) 为空返回空，不为空返回Supplier中的对象
+<X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) 有异常
+```
+
+例子，优雅处理你的null值：
+
+```
+public static List<String> getName(List<Person> personList){
+    List<String> result = new ArrayList<>();
+    Optional.ofNullable(personList).orElseGet(ArrayList::new)
+            .forEach(person -> {           					Optional.ofNullable(person).map(Person::getName).ifPresent(result::add);
+            });
+    return result;
+}
+```
