@@ -113,11 +113,11 @@ vi /usr/local/nginx/conf/nginx.conf
 /usr/local/nginx/sbin/nginx -s reload
 ```
 
-浏览器访问：http://ip:port/测试fastdfs步骤返回的文件地址
+浏览器访问：nginx地址/测试fastdfs步骤返回的文件地址
 
 
 
-### springboot整合fast上传
+## springboot整合fast上传
 
 加入依赖：
 
