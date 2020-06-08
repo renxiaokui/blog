@@ -114,3 +114,44 @@ vi /usr/local/nginx/conf/nginx.conf
 ```
 
 浏览器访问：http://ip:port/测试fastdfs步骤返回的文件地址
+
+
+
+### springboot整合fast上传
+
+加入依赖：
+
+```
+<dependency>
+    <groupId>com.github.tobato</groupId>
+    <artifactId>fastdfs-client</artifactId>
+    <version>1.27.2</version>
+</dependency>
+```
+
+修改配置文件
+
+```
+fdfs:
+  so-timeout: 5000
+  connect-timeout: 5000
+  #缩略图生成参数
+  thumb-image:
+    width: 150
+    height: 150
+  #TrackerList参数,支持多个
+  tracker-list:
+    - fastdfs服务器的ip:22122
+  web-server-url: 'web访问地址，一般是nginx的域名'
+```
+
+上传文件：
+
+```
+    @Autowired
+    private FastFileStorageClient fastFileStorageClient;
+    
+    #调用api
+    fastFileStorageClient.uploadFile()
+```
+
