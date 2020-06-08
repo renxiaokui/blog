@@ -104,7 +104,7 @@ url_have_group_name = true（配置多个tracker时，应该将此项设置为tr
 
 ```
 vi /usr/local/nginx/conf/nginx.conf
-
+#如果有多个group则配置location ~/group([0-9])/M00 ，没有则不用配group
  location /group1/M00 {
                 root   /home/data/fastdfs/storage/data/;
                 ngx_fastdfs_module;
@@ -113,11 +113,36 @@ vi /usr/local/nginx/conf/nginx.conf
 /usr/local/nginx/sbin/nginx -s reload
 ```
 
-浏览器访问：nginx地址/测试fastdfs步骤返回的文件地址
+配置下载fastdfs文件自定义文件名
+
+```
+location /group1/M00 {
+                root   /home/data/fastdfs/storage/data/;
+                if ($arg_attname ~ "^(.+)") {
+                        #设置下载
+                        add_header Content-Type application/x-download;
+                        #设置文件名
+                        add_header Content-Disposition "attachment;filename=$arg_attname";
+                 }
+                ngx_fastdfs_module;
+        }
+```
+
+浏览器访问地址：nginx地址/测试fastdfs步骤返回的文件地址
+
+浏览器访问下载地址：nginx地址/测试fastdfs步骤返回的文件地址?filename=文件名
 
 
 
 ## springboot整合fast上传
+
+注意：此操作需要fastdfs服务器中 storge配置外网地址，不然上传会找不到连接
+
+vi storage.conf
+
+tracker_server = 外网ip:22122
+
+
 
 加入依赖：
 
