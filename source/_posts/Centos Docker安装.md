@@ -16,6 +16,7 @@ categories:
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
     sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
     sudo yum makecache fast
+    (centos8需要加入：sudo dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm)
     sudo yum -y install docker-ce
     sudo systemctl enable docker
     sudo systemctl start docker

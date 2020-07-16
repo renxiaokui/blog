@@ -10,13 +10,26 @@ tags:
 
 1. 下载
 
-   fastdfs：wget https://github.com/happyfish100/fastdfs/archive/V6.06.tar.gz
+   fastdfs：`wget https://github.com/happyfish100/fastdfs/archive/V6.06.tar.gz`
 
-   libfastcommon：wget https://github.com/happyfish100/libfastcommon/archive/V1.0.43.tar.gz
+   libfastcommon：`wget https://github.com/happyfish100/libfastcommon/archive/V1.0.43.tar.gz`
 
-2.  解压安装
+2. 解压安装
+
+   `yum -y install gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel`
 
    ```
+   tar -zxvf V1.0.43.tar.gz
+   
+   cd libfastcommon-1.0.43/
+   
+   ./make.sh
+   
+   ./make.sh install
+   ```
+
+   ```
+   cd ..
    tar -zxvf V6.06.tar.gz
    
    cd fastdfs-6.06/
@@ -31,6 +44,8 @@ tags:
    ```
    cd /etc/fdfs/
    
+   mkdir -p /home/data/fastdfs
+   
    cp tracker.conf.sample tracker.conf
    
    vi tracker.conf
@@ -38,8 +53,9 @@ tags:
    #修改如下配置
    #tracker存储data和log的跟路径，必须提前创建好
    base_path=/home/data/fastdfs
-   port=23000
+   port=22122
    http.server_port=80
+   store_group = group1 #组名
    
    fdfs_trackerd /etc/fdfs/tracker.conf start
    ```
@@ -49,13 +65,14 @@ tags:
    ```
    cp storage.conf.sample storage.conf
    vi storage.conf
+   mkdir -p /home/data/fastdfs/storage
    #修改如下配置
    base_path=/home/data/fastdfs/storage   #storage存储data和log的跟路径，必须提前创建好
    port=23000  #storge默认23000，同一个组的storage端口号必须一致
    group_name=group1  #默认组名，根据实际情况修改
-   store_path_count=1  #存储路径个数，需要和store_path个数匹配
    store_path0=/home/data/fastdfs/storage  #如果为空，则使用base_path
-   tracker_server=你的ip地址:22122 
+   tracker_server=你的ip地址:22122
+   http.server_port=80
    
    fdfs_storaged /etc/fdfs/storage.conf start
    ```
@@ -63,6 +80,13 @@ tags:
 3. 测试fastdfs
 
    ```
+   cp client.conf.sample client.conf
+   vi client.conf
+   #修改如下配置
+   base_path = /home/data/fastdfs
+   tracker_server = ip:22122
+   
+   
    echo HelloWorld > test.txt
    fdfs_upload_file /etc/fdfs/client.conf test.txt
    ```
